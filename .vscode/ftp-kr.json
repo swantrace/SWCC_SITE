@@ -1,0 +1,13 @@
+{
+  "remotePath": "./",
+  "host": "ftp.swcc1.ca",
+  "username": "swcc_new_theme",
+  "password": "zX3HrKT!SJzWRF3",
+  "protocol": "ftp",
+  "port": 21,
+  "fileNameEncoding": "utf8",
+  "autoUpload": true,
+  "autoDelete": true,
+  "autoDownload": false,
+  "ignore": [".git", "/.vscode", "/app"]
+}
