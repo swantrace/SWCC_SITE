@@ -1,11 +1,16 @@
 const { build } = require("esbuild");
 const { sassPlugin } = require("esbuild-sass-plugin");
+const inlineImage = require("esbuild-plugin-inline-image");
 
-build({
-  entryPoints: ["./src/index.js"],
-  bundle: true,
-  minify: true,
-  watch: true,
-  outfile: "../assets/bundled.min.js",
-  plugins: [sassPlugin()],
-}).catch(() => process.exit(1));
+(async () => {
+  const res = await build({
+    entryPoints: ["./index.ts"],
+    bundle: true,
+    minify: true,
+    watch: true,
+    target: ["es6", "safari11"],
+    outfile: "../assets/bundled.min.js",
+    publicPath: "https://southwinnipegcc.ca/wp-content/themes/swcc/assets",
+    plugins: [sassPlugin(), inlineImage({ limit: 160 })],
+  });
+})();
