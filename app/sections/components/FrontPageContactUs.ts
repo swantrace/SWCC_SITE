@@ -1,5 +1,5 @@
 // @ts-ignore
-import { virtual, html } from "haunted/compiled";
+import { virtual, html } from "haunted";
 import { VirtualRenderer } from "haunted/lib/virtual";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 

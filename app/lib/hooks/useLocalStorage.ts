@@ -1,5 +1,5 @@
 // @ts-ignore
-import { useEffect, useState } from "haunted/compiled";
+import { useEffect, useState } from "haunted";
 
 type NewState<T> = T | ((previousState?: T) => T);
 type StateUpdater<T> = (value: NewState<T>) => void;
@@ -28,6 +28,7 @@ function useLocalStorage<T>(
     }
   };
 
+  // @ts-ignore
   const [storedValue, setStoredValue] = useState<T>(readValue());
 
   // Return a wrapped version of useState's setter function that ...

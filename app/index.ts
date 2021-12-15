@@ -1,9 +1,8 @@
-import "@ungap/custom-elements";
 import "./style.scss";
 import WPAPI from "./lib/wpapi";
 import IconButton from "./sections/components/IconButton";
 // @ts-ignore
-import { component, html } from "haunted/compiled";
+import { component, html } from "haunted";
 import TopIconButtons from "./sections/components/TopIconButtons";
 import Main from "./sections/Main";
 import Footer from "./sections/Footer";

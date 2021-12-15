@@ -1,5 +1,5 @@
 // @ts-ignore
-import { virtual, html, useEffect } from "haunted/compiled";
+import { virtual, html, useEffect } from "haunted";
 import { VirtualRenderer } from "haunted/lib/virtual";
 // @ts-ignore
 import MultipleItemsPerRowCarousel from "./MultipleItemsPerRowCarousel";

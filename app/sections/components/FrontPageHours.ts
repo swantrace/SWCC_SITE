@@ -1,5 +1,5 @@
 // @ts-ignore
-import { virtual, html } from "haunted/compiled";
+import { virtual, html } from "haunted";
 import { VirtualRenderer } from "haunted/lib/virtual";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 
@@ -24,7 +24,7 @@ const FrontPageHours = virtual(((options: FrontPageHoursOptions) => {
       class="fw-bolder fs-6 text-white text-center mx-auto px-2 px-md-5"
       style="line-height: 1.2;"
     >
-      ${unsafeHTML(hours.description.replaceAll("\r\n", "<br />"))}
+      ${unsafeHTML(hours?.description?.replace("/\r\n/g", "<br />") ?? "")}
     </p>
   </div>`;
 }) as VirtualRenderer);

@@ -1,5 +1,5 @@
 // @ts-ignore
-import { html, useEffect } from "haunted/compiled";
+import { html, useEffect } from "haunted";
 import useLocalStorage from "../lib/hooks/useLocalStorage";
 import WPAPI from "../lib/wpapi";
 import FrontPageMain from "./components/FrontPageMain";

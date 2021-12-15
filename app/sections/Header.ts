@@ -1,5 +1,5 @@
 // @ts-ignore
-import { html, useEffect } from "haunted/compiled";
+import { html, useEffect } from "haunted";
 import WPAPI from "../lib/wpapi";
 import TopIconButtons from "./components/TopIconButtons";
 import arrayToTree from "array-to-tree";

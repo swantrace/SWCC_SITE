@@ -1,5 +1,5 @@
 //@ts-ignore
-import { virtual, html } from "haunted/compiled";
+import { virtual, html } from "haunted";
 import IconButton from "./IconButton";
 //@ts-ignore
 import greenDonaitionImg from "../../img/icon-donation-green.png";
