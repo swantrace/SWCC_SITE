@@ -1,5 +1,5 @@
 // @ts-ignore
-import { html, virtual } from "haunted/compiled";
+import { virtual, html } from "haunted/compiled";
 import { VirtualRenderer } from "haunted/lib/virtual";
 
 type IconButtonOptions = {
