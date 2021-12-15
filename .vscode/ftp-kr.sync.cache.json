@@ -1,0 +1,73 @@
+{
+  "ftp://ftp.swcc1.ca:21@swcc_new_theme": {
+    ".gitignore": {
+      "type": "-",
+      "size": 23,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".vscode": {},
+    "404.php": {
+      "type": "-",
+      "size": 76,
+      "lmtime": 0,
+      "modified": false
+    },
+    "archive.php": {
+      "type": "-",
+      "size": 81,
+      "lmtime": 0,
+      "modified": false
+    },
+    "assets": {},
+    "footer.php": {
+      "type": "-",
+      "size": 154,
+      "lmtime": 0,
+      "modified": false
+    },
+    "front-page.php": {
+      "type": "-",
+      "size": 143,
+      "lmtime": 0,
+      "modified": false
+    },
+    "functions.php": {
+      "type": "-",
+      "size": 1732,
+      "lmtime": 0,
+      "modified": false
+    },
+    "header.php": {
+      "type": "-",
+      "size": 1008,
+      "lmtime": 0,
+      "modified": false
+    },
+    "index.php": {
+      "type": "-",
+      "size": 137,
+      "lmtime": 0,
+      "modified": false
+    },
+    "page.php": {
+      "type": "-",
+      "size": 80,
+      "lmtime": 0,
+      "modified": false
+    },
+    "single.php": {
+      "type": "-",
+      "size": 85,
+      "lmtime": 0,
+      "modified": false
+    },
+    "style.css": {
+      "type": "-",
+      "size": 148,
+      "lmtime": 0,
+      "modified": true
+    }
+  },
+  "$version": 1
+}
