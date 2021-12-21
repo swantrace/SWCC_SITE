@@ -13,6 +13,6 @@ const inlineImage = require("esbuild-plugin-inline-image");
     // target: ["es6", "safari11"],
     outfile: "../assets/bundled.min.js",
     publicPath: "https://southwinnipegcc.ca/wp-content/themes/swcc/assets",
-    plugins: [sassPlugin(), inlineImage({ limit: 160 })],
+    plugins: [sassPlugin(), inlineImage()],
   });
 })();
