@@ -9,6 +9,7 @@ const inlineImage = require("esbuild-plugin-inline-image");
     minify: true,
     watch: true,
     platform: "browser",
+    sourcemap: "external",
     target: ["es2015", "safari11"],
     // target: ["es6", "safari11"],
     outfile: "../assets/bundled.min.js",

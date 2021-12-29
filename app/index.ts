@@ -1,4 +1,5 @@
 import "./style.scss";
+
 import WPAPI from "./lib/wpapi";
 import IconButton from "./sections/components/IconButton";
 // @ts-ignore
@@ -27,7 +28,13 @@ function setup() {
     component(Main, {
       useShadowDOM: false,
       // @ts-ignore
-      observedAttributes: ["page-type", "page-id"],
+      observedAttributes: [
+        "page-type",
+        "page-id",
+        "page-number",
+        "page-term-id",
+        "page-term-name",
+      ],
       baseElement: HTMLElement,
     }),
     { extends: "main" }

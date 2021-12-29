@@ -1,4 +1,3 @@
-<!-- should be used to handle bloghome, 404 and search -->
 <?php get_header(); ?>
 <template id="navigation">
   <?php the_posts_pagination( array(
@@ -8,10 +7,11 @@
 ) ); ?>
 </template>
 <main 
-  class="site-main"
-  is="swcc-main"
-  page-type="indexPage" 
+  class="search-result-page"
+  is="swcc-main" 
+  page-type="searchPage" 
   page-id="<?= the_ID(); ?>"
-  page-number="<?= $paged ?>" 
+  page-number="<?= $paged ?>"
+  page-term-name="<?= $s ?>" 
 ></main>
 <?php get_footer(); ?>

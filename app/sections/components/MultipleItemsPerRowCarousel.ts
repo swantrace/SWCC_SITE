@@ -9,12 +9,13 @@ type MultipleItemsPerRowCarouselOptions = {
   id: string;
   items: { title: string; description: string; link: string; image: string }[];
   card: boolean;
+  customCarouselInnerClass: string;
 };
 
 const MultipleItemsPerRowCarousel = virtual(((
   options: MultipleItemsPerRowCarouselOptions
 ) => {
-  const { nor, id, items, card } = options;
+  const { nor, id, items, card, customCarouselInnerClass } = options;
   useEffect(() => {
     const sponsorsSliderElement = document.querySelector(`#${id}`) as Element;
     const sponsorsSlider = new Carousel(sponsorsSliderElement);
@@ -26,7 +27,7 @@ const MultipleItemsPerRowCarousel = virtual(((
         if (nextElement === null) {
           nextElement = itemElement?.parentElement?.children[0] ?? null;
         }
-        console.log(nextElement);
+        // console.log(nextElement);
         const cloned = (nextElement as Element).children[0].cloneNode(true);
         itemElement.appendChild(cloned);
         for (let i = 0; i < minPerSlide; i++) {
@@ -56,7 +57,11 @@ const MultipleItemsPerRowCarousel = virtual(((
             ></button>`
           )}
         </div>
-        <div class="carousel-inner">
+        <div
+          class=${`carousel-inner ${
+            customCarouselInnerClass ? customCarouselInnerClass : ""
+          }`}
+        >
           ${items.map(
             (item, index) => html`<div
               data-index=${index}

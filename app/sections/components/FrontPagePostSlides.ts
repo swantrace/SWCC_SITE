@@ -5,29 +5,23 @@ import { VirtualRenderer } from "haunted/lib/virtual";
 import MultipleItemsPerRowCarousel from "./MultipleItemsPerRowCarousel";
 
 type FrontPagePostSlidesOptions = {
-  post_slides: {
-    default_image: string;
-    post_and_image: {
-      post: {
-        post_content: string;
-        post_excerpt: string;
-        post_title: string;
-        post_name: string;
-      };
-      image: string;
-    }[];
-  };
+  posts: {
+    excerpt: string;
+    content: string;
+    title: string;
+    slug: string;
+    image: string;
+  }[];
 };
 
 const FrontPagePostSlides = virtual(((options: FrontPagePostSlidesOptions) => {
-  const { post_slides } = options;
-  const items = post_slides.post_and_image.map((a) => ({
-    title: a.post.post_title,
-    description: a.post.post_excerpt
-      ? a.post.post_excerpt
-      : a.post.post_content?.replace(/(<([^>]+)>)/gi, "")?.substring(0, 100) ??
-        "",
-    link: `/${a.post.post_name}`,
+  const { posts } = options;
+  const items = posts.map((a) => ({
+    title: a.title,
+    description: a.excerpt
+      ? a.excerpt.replace(/(<([^>]+)>)/gi, "")?.substring(0, 100)
+      : a.content?.replace(/(<([^>]+)>)/gi, "")?.substring(0, 100) ?? "",
+    link: `/${a.slug}`,
     image: a.image,
   }));
   return html`${MultipleItemsPerRowCarousel({
@@ -35,6 +29,7 @@ const FrontPagePostSlides = virtual(((options: FrontPagePostSlidesOptions) => {
     items,
     nor: 3,
     card: true,
+    customCarouselInnerClass: "pb-3",
   })}`;
 }) as VirtualRenderer);
 

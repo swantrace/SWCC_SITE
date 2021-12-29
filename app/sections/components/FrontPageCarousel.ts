@@ -20,10 +20,15 @@ const FrontPageCarousel = virtual(((options: FrontPageCarouselOptions) => {
     const topCarouselElement = document.querySelector(
       "#frontPageTopCarousel"
     ) as Element;
-    const topCarousel = new Carousel(topCarouselElement);
+
+    if (window.matchMedia("(min-width: 992px)").matches) {
+      const topCarousel = new Carousel(topCarouselElement);
+    } else {
+      const topCarousel = new Carousel(topCarouselElement, { interval: false });
+    }
   }, []);
   const { carousel } = options;
-  console.log("carousels: ", carousel);
+  // console.log("carousels: ", carousel);
   return html`<div id="frontPageTopCarousel" class="carousel slide">
     <div class="carousel-indicators d-none d-lg-flex">
       ${carousel.map(
@@ -45,7 +50,7 @@ const FrontPageCarousel = virtual(((options: FrontPageCarouselOptions) => {
           <img src=${slide.image} class="d-block w-100" alt="..." />
           <div class="carousel-caption d-none d-md-block">
             <h5>${slide.title}</h5>
-            <p>${unsafeHTML(slide.description)}</p>
+            <p class="px-1">${unsafeHTML(slide.description)}</p>
           </div>
         </div>`
       )}

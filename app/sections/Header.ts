@@ -33,16 +33,15 @@ const Header = ({ menuId }) => {
     // }
   }, []);
 
-  return html`<div class="d-flex justify-content-between align-items-end px-3">
-    <a class="navbar-brand d-none d-lg-block" href="/">
-      <img src=${logoImg} id="top-desktop-logo" />
-    </a>
-    <div class="d-flex flex-column flex-fill">
-      ${TopIconButtons()}${TopNavigation(menuInfo)}
+  return html`<div
+    class="d-flex flex-column justify-content-between align-items-stretch align-items-lg-center px-3"
+  >
+    <div class="w-100">
+      <a class="navbar-brand d-none d-lg-block w-100" href="/">
+        <img src=${logoImg} id="top-desktop-logo" class="w-100" />
+      </a>
     </div>
-    <a class="d-none d-lg-block"
-      ><img src=${register} id="top-desktop-register"
-    /></a>
+    <div class="d-flex flex-column flex-fill">${TopNavigation(menuInfo)}</div>
   </div>`;
 };
 

@@ -34,18 +34,43 @@ const FrontPageNewsletterForm = virtual(((
         <p class="text-white fs-1">${newsletter_form.description}</p>
       </div>
       <div class="flex-fill d-flex align-items-center" id="newsletter-form">
-        <div class="input-group">
-          <input
-            class="form-control"
-            type="text"
-            placeholder="Your Email Address ..."
-          /><button
-            class="btn bg-secondary rounded-0 text-white fs-6 fw-bolder"
-            type="button"
-          >
-            SUBMIT
-          </button>
-        </div>
+        <form
+          action=${newsletter_form.form_action}
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          class="validate w-100"
+          target="_blank"
+          novalidate
+        >
+          <div class="input-group">
+            <input
+              required
+              class="form-control"
+              type="email"
+              value=""
+              name="EMAIL"
+              placeholder="Your Email Address ..."
+            />
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input
+                type="text"
+                name=${newsletter_form.hidden_input_name}
+                tabindex="-1"
+                value=""
+              />
+            </div>
+            <button
+              class="btn bg-secondary rounded-0 text-white fs-6 fw-bolder"
+              type="submit"
+              value="Subscribe"
+              name="subscribe"
+              id="mc-embedded-subscribe"
+            >
+              SUBMIT
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>`;

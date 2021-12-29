@@ -1,10 +1,16 @@
 //@ts-ignore
-import { virtual, html, useEffect } from "haunted";
+import { virtual, html, useEffect, useCallback } from "haunted";
 import { VirtualRenderer } from "haunted/lib/virtual";
 // @ts-ignore
 import Collapse from "../../node_modules/bootstrap/js/src/collapse";
 // @ts-ignore
 import logoImg from "../../img/swcc-logo.png";
+// @ts-ignore
+import iconSearch from "../../img/icon-search.png";
+// @ts-ignore
+import iconTranslate from "../../img/icon-translate.png";
+import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import TopNavigationIcons from "./TopNavigationIcons";
 
 type MenuItem = {
   ID: number;
@@ -18,57 +24,34 @@ type MenuItem = {
 type MenuInfo = MenuItem[];
 
 const TopNavigation = virtual(((menuInfo: MenuInfo) => {
-  const menuInfoFake = [
-    {
-      ID: 4407,
-      menu_order: 1,
-      menu_item_parent: "0",
-      url: "https://southwinnipegcc.ca/",
-      title: "SWCC",
-    },
-    {
-      ID: 4410,
-      menu_order: 3,
-      menu_item_parent: "0",
-      url: "https://southwinnipegcc.ca/about-us/",
-      title: "Activities",
-    },
-    {
-      ID: 4409,
-      menu_order: 5,
-      menu_item_parent: "0",
-      url: "https://southwinnipegcc.ca/sports/",
-      title: "Children & Youth",
-    },
-    {
-      ID: 4408,
-      menu_order: 6,
-      menu_item_parent: "0",
-      url: "https://southwinnipegcc.ca/activities/",
-      title: "Seniors",
-    },
-    {
-      ID: 4408,
-      menu_order: 6,
-      menu_item_parent: "0",
-      url: "https://southwinnipegcc.ca/activities/",
-      title: "Adults",
-    },
-    {
-      ID: 4411,
-      menu_order: 7,
-      menu_item_parent: "0",
-      url: "https://southwinnipegcc.ca/events/",
-      title: "News & Events",
-    },
-    {
-      ID: 4412,
-      menu_order: 8,
-      menu_item_parent: "0",
-      url: "https://southwinnipegcc.ca/swcc-contacts/",
-      title: "Rental",
-    },
-  ];
+  const hasDropdown = useCallback(
+    (menuItem: MenuItem) => menuItem?.submenu?.length ?? 0,
+    []
+  );
+  const currentMenuItemIsActive = useCallback(
+    (menuItem: MenuItem) =>
+      menuItem.url
+        .replace("https://southwinnipegcc.ca", "")
+        .includes(location.pathname) && !(location.pathname === "/"),
+    []
+  );
+  const handleFirstLevelMenuItemMouseEnter = useCallback((e) => {
+    const target = e.target;
+    if (target.classList.contains("dropdown")) {
+      const dropMenu = e.target.querySelector(".dropdown-menu");
+      dropMenu.classList.remove("d-lg-none");
+      dropMenu.classList.add("show");
+    }
+  }, []);
+
+  const handleFirstLevelMenuItemMouseLeave = useCallback((e) => {
+    const target = e.target;
+    if (target.classList.contains("dropdown")) {
+      const dropMenu = e.target.querySelector(".dropdown-menu");
+      dropMenu.classList.remove("show");
+      dropMenu.classList.add("d-lg-none");
+    }
+  }, []);
   useEffect(() => {
     const mainNav = document.querySelector("#main_nav") as Element;
     const mainNavCollapse = new Collapse(mainNav, { toggle: false });
@@ -94,68 +77,39 @@ const TopNavigation = virtual(((menuInfo: MenuInfo) => {
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="main_nav">
         <ul class="navbar-nav ps-3 ps-lg-0">
-          ${menuInfoFake.map(
+          ${menuInfo.map(
             (menuItem) =>
-              html`<li class="nav-item">
+              html`<li
+                class=${`nav-item${hasDropdown(menuItem) ? " dropdown" : ""}`}
+                @mouseenter=${handleFirstLevelMenuItemMouseEnter}
+                @mouseleave=${handleFirstLevelMenuItemMouseLeave}
+              >
                 <a
-                  class="nav-link fw-bolder text-uppercase fs-2
-                  ${menuItem.url.replace("https://southwinnipegcc.ca", "") ===
-                  location.pathname
-                    ? "active text-primary text-decoration-underline"
-                    : "text-info"}"
+                  class=${`nav-link fw-bolder text-uppercase fs-2${
+                    currentMenuItemIsActive(menuItem)
+                      ? " active text-primary text-decoration-underline"
+                      : " text-info"
+                  }${hasDropdown(menuItem) ? " dropdown-toggle" : ""}`}
                   href=${menuItem.url}
-                  >${menuItem.title}</a
-                >
+                  >${unsafeHTML(menuItem.title)}</a
+                >${hasDropdown(menuItem)
+                  ? html`
+                      <ul class="dropdown-menu d-block d-lg-none">
+                        ${menuItem.submenu?.map(
+                          (menuItem) => html`
+                            <li>
+                              <a class="dropdown-item" href=${menuItem.url}
+                                >${unsafeHTML(menuItem.title)}</a
+                              >
+                            </li>
+                          `
+                        )}
+                      </ul>
+                    `
+                  : html``}
               </li>`
           )}
-          <li class="nav-item">
-            <a
-              class="nav-link fw-bolder d-block d-lg-none text-uppercase fs-2 ${"".replace(
-                "https://southwinnipegcc.ca",
-                ""
-              ) === location.pathname
-                ? "active text-primary text-decoration-underline"
-                : "text-info"}"
-              href="#"
-              >DONATE NOW</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link fw-bolder d-block d-lg-none text-uppercase fs-2 ${"".replace(
-                "https://southwinnipegcc.ca",
-                ""
-              ) === location.pathname
-                ? "active text-primary text-decoration-underline"
-                : "text-info"}"
-              href="#"
-              >TRANSLATE</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link fw-bolder d-block d-lg-none text-uppercase fs-2 ${"".replace(
-                "https://southwinnipegcc.ca",
-                ""
-              ) === location.pathname
-                ? "active text-primary text-decoration-underline"
-                : "text-info"}"
-              href="#"
-              >CALENDAR</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link fw-bolder d-block d-lg-none text-uppercase fs-2 ${"".replace(
-                "https://southwinnipegcc.ca",
-                ""
-              ) === location.pathname
-                ? "active text-primary text-decoration-underline"
-                : "text-info"}"
-              href="#"
-              >REGISTER</a
-            >
-          </li>
+          ${TopNavigationIcons()}
         </ul>
       </div>
     </div>
