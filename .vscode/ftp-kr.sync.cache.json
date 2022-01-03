@@ -9,17 +9,23 @@
     ".vscode": {},
     "404.php": {
       "type": "-",
-      "size": 76,
+      "size": 150,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     "archive.php": {
       "type": "-",
-      "size": 81,
+      "size": 679,
+      "lmtime": 0,
+      "modified": true
+    },
+    "assets": {},
+    "fffm.php": {
+      "type": "-",
+      "size": 0,
       "lmtime": 0,
       "modified": false
     },
-    "assets": {},
     "footer.php": {
       "type": "-",
       "size": 154,
@@ -40,27 +46,33 @@
     },
     "header.php": {
       "type": "-",
-      "size": 1069,
+      "size": 3170,
       "lmtime": 0,
       "modified": true
     },
     "index.php": {
       "type": "-",
-      "size": 137,
+      "size": 445,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     "page.php": {
       "type": "-",
-      "size": 80,
+      "size": 385,
+      "lmtime": 0,
+      "modified": true
+    },
+    "search.php": {
+      "type": "-",
+      "size": 426,
       "lmtime": 0,
       "modified": false
     },
     "single.php": {
       "type": "-",
-      "size": 85,
+      "size": 395,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     "style.css": {
       "type": "-",

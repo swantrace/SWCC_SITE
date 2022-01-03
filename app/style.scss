@@ -317,10 +317,11 @@ $utilities: map-merge(
         }
       }
     }
-    &.single-post-page {
+    &.single-post-page,
+    &.static-page {
       #next_post_name,
       #previous_post_name {
-        max-width: 150px;
+        max-width: 110px;
         white-space: nowrap;
         overflow-x: hidden;
       }

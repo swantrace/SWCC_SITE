@@ -16,7 +16,7 @@
 	<link rel="stylesheet" media="print" 
 		href="<?= get_stylesheet_directory_uri() . "/assets/bundled.min.css"?>"  
 		onload="this.onload=null; this.removeAttribute('media')">
-	<script defer src="<?= get_stylesheet_directory_uri() . "/assets/bundled.min.js" ?>"></script>
+	<script defer src="<?= get_stylesheet_directory_uri() . "/assets/bundled.min.js?v=" . date("Y-m-d") ?>"></script>
 	<script type="text/javascript">
 		function googleTranslateElementInit2() {
 			new google.translate.TranslateElement(

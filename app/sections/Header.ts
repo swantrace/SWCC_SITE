@@ -3,7 +3,7 @@ import { html, useEffect } from "haunted";
 import WPAPI from "../lib/wpapi";
 import TopIconButtons from "./components/TopIconButtons";
 import arrayToTree from "array-to-tree";
-import useLocalStorage from "../lib/hooks/useLocalStorage";
+import useSessionStorage from "../lib/hooks/useSessionStorage";
 import TopNavigation from "./components/TopNavigation";
 // @ts-ignore
 import logoImg from "../img/swcc-logo.png";
@@ -13,7 +13,7 @@ import register from "../img/register.png";
 const wpapi = WPAPI.getInstance("https://southwinnipegcc.ca");
 
 const Header = ({ menuId }) => {
-  const [menuInfo, setMenuInfo] = useLocalStorage(`menu_${menuId}`, []);
+  const [menuInfo, setMenuInfo] = useSessionStorage(`menu_${menuId}`, []);
   useEffect(() => {
     // if (menuInfo.length === 0) {
     wpapi

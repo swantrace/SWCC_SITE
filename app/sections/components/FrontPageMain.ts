@@ -10,7 +10,6 @@ import FrontPageAnnouncement from "./FrontPageAnnouncement";
 import FrontPageTweets from "./FrontPageTweets";
 import FrontPageContactUs from "./FrontPageContactUs";
 import FrontPageSponsors from "./FrontPageSponsors";
-import useLocalStorage from "../../lib/hooks/useLocalStorage";
 import WPAPI from "../../lib/wpapi";
 import useSessionStorage from "../../lib/hooks/useSessionStorage";
 import Spinner from "./Spinner";
@@ -110,7 +109,7 @@ const handleRowPageInfo = (rawPageInfo) => {
 
 const FrontPageMain = virtual(((options: FrontPageMainOptions) => {
   const { pageId, wpapi } = options;
-  const [pageInfo, setPageInfo] = useLocalStorage<FrontPageInfo>(
+  const [pageInfo, setPageInfo] = useSessionStorage<FrontPageInfo>(
     `page_${pageId}`,
     null as any
   );

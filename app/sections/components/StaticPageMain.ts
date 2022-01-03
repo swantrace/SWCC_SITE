@@ -1,7 +1,7 @@
 // @ts-ignore
 import { virtual, html, useEffect, useState } from "haunted";
 import { VirtualRenderer } from "haunted/lib/virtual";
-import useLocalStorage from "../../lib/hooks/useLocalStorage";
+import useSessionStorage from "../../lib/hooks/useSessionStorage";
 import WPAPI from "../../lib/wpapi";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 // @ts-ignore
@@ -28,7 +28,7 @@ const handleRowPageInfo = (rawPageInfo) => {
 
 const StaticPageMain = virtual(((options: StaticPageMainOptions) => {
   const { pageId, wpapi } = options;
-  const [pageInfo, setPageInfo] = useLocalStorage<StaticPageInfo>(
+  const [pageInfo, setPageInfo] = useSessionStorage<StaticPageInfo>(
     `page_${pageId}`,
     null as any
   );
@@ -69,7 +69,10 @@ const StaticPageMain = virtual(((options: StaticPageMainOptions) => {
   if (pageInfo) {
     return html`<article class="d-flex flex-column align-items-center">
         <h1 class="text-center">${unsafeHTML(pageInfo.title)}</h1>
-        <div class="bg-white w-100 mb-5" style="max-width: 666px;">
+        <div
+          class="bg-white w-100 mb-5 container-fluid"
+          style="max-width: 666px;"
+        >
           ${unsafeHTML(pageInfo.content)}
         </div>
       </article>

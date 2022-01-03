@@ -1,14 +1,14 @@
 // @ts-ignore
 import { html, useEffect } from "haunted";
 // @ts-ignore
-import useLocalStorage from "../lib/hooks/useLocalStorage";
+import useSessionStorage from "../lib/hooks/useSessionStorage";
 import WPAPI from "../lib/wpapi";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
 
 const wpapi = WPAPI.getInstance("https://southwinnipegcc.ca");
 
 const Footer = ({ sidebarId }) => {
-  const [footerInfo, setFooterInfo] = useLocalStorage(
+  const [footerInfo, setFooterInfo] = useSessionStorage(
     `sidebar_${sidebarId}`,
     []
   );

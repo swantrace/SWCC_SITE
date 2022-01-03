@@ -114,7 +114,10 @@ const SinglePostPageMain = virtual(((options: SinglePostPageMainOptions) => {
             >
           </div>
         </div>
-        <div class="bg-white w-100 mb-5" style="max-width: 666px;">
+        <div
+          class="bg-white w-100 mb-5 container-fluid"
+          style="max-width: 666px;"
+        >
           ${unsafeHTML(pageInfo.content)}
         </div>
       </article>

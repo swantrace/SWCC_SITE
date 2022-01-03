@@ -1,7 +1,6 @@
 // @ts-ignore
 import { virtual, html, useEffect } from "haunted";
 import { VirtualRenderer } from "haunted/lib/virtual";
-import useLocalStorage from "../../lib/hooks/useLocalStorage";
 import WPAPI from "../../lib/wpapi";
 import useSessionStorage from "../../lib/hooks/useSessionStorage";
 import { unsafeHTML } from "lit-html/directives/unsafe-html";
